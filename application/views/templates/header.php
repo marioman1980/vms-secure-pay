@@ -1,16 +1,20 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
+
 <!DOCTYPE>
 <html style="min-height:100%">
-
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> 
   	<title>VMS Secure Payments</title> 
-	<link rel="icon" href="images/logo.ico">
+	<link rel="icon" href="images/logo.png">
 	<link rel="stylesheet" type="text/css" href="css/w3css.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
+	
+	
+
+	
 
 </head>
 

@@ -22,6 +22,7 @@ form, #header-img{
 .form_readonly{
 	background-color:#FBF6D9;color:#736F6E
 }
+/* Remove spinner from number inputs */
 input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button { 
   -webkit-appearance: none; 
@@ -32,6 +33,22 @@ input[type=number]::-webkit-outer-spin-button {
 }
 .footer_link:hover{
 	color:#333333
+}
+/* User Form Message Box*/
+#message{
+	resize:none;
+	height:150px;
+	margin-bottom:10px; 
+	width: 100%
+}
+#cancel{
+	text-decoration: underline;
+	color: 0000ff;
+	cursor: pointer; 
+	cursor: hand
+}
+#cancel:hover{
+	text-shadow: 0.1px 0.1px #0000ff;
 }
 
 /* TEST SITE WATERMARK */

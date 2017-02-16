@@ -11,7 +11,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	 * 		http://example.com/index.php/main/index
 	 *	- or -
 	 * Since this controller is set as the default controller in config/routes.php, 
-	 * it's displayed at root of site folder : https://jkamradcliffe.net/vmssecurepay
+	 * it's displayed at root of site folder : https://vmssecurepay.jkamradcliffe.net
 	 */     
       public function index() { 
          $this->load->view('templates/header');
