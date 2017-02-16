@@ -33,3 +33,18 @@ input[type=number]::-webkit-outer-spin-button {
 .footer_link:hover{
 	color:#333333
 }
+
+/* TEST SITE WATERMARK */
+#watermark {
+	color: #d0d0d0;
+	font-size: 200px;
+	-webkit-transform: rotate(-15deg);
+	-moz-transform: rotate(-15deg);
+	position: absolute;
+	width: 100%;
+	left: 25px;
+	top: 50px;
+	opacity: 0.2;
+	text-align: center;
+	pointer-events:none;
+}
