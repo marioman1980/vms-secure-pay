@@ -1,0 +1,35 @@
+body{
+	height: 100%;
+	font-size:12px; 
+	padding-bottom:20px
+}
+form, #header-img{
+	width:100%;
+	margin:auto
+}
+@media only screen and (min-width:601px){
+	form, #header-img{
+		width:500px
+	}
+}
+#container{
+	min-height:100%; 
+	margin-bottom:-150px
+}
+.input_margin{
+	margin-bottom:10px
+}
+.form_readonly{
+	background-color:#FBF6D9;color:#736F6E
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+.footer_link{
+	color:#666666
+}
+.footer_link:hover{
+	color:#333333
+}
