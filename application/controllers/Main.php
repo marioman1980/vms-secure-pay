@@ -14,6 +14,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		* it's displayed at root of site folder : https://vmssecurepay.jkamradcliffe.net
 		*/     
 		public function index() { 
+      /* Load page comprising header and main content */
 		  $this->load->view('templates/header');
 		  $this->load->view('main');
 		}	     
