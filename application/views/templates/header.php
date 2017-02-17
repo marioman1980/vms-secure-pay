@@ -23,26 +23,28 @@ defined('BASEPATH') OR exit('No direct script access allowed');
    
    
    
-   	<script>
-		$(document).ready(function(){
-			$(document).on('submit', '#details_for_email_link', function(){	
-			event.preventDefault();
-			var form = $('#details_for_email_link');
-			var data_string = $(form).serialize();	
-				
-				$.ajax({
-					type: 'POST',
-					url: 'https://vmssecurepay.jkamradcliffe.net/index.php/test_email/htmlmail',
-					data: data_string,
-					success: function(json){
-						var obj = jQuery.parseJSON(json);
-					   	console.log(obj['success']);
-					}		
-				});
-			return false;
-			});
-		});				
-	</script>
+   <script>
+	    $(document).ready(function(){
+			  $(document).on('submit', '#details_for_email_link', function(){	
+				   event.preventDefault();
+				   var form = $('#details_for_email_link');
+				   var data_string = $(form).serialize();	
+
+				   $.ajax({
+					    type: 'POST',
+					    url: 'https://vmssecurepay.jkamradcliffe.net/index.php/test_email/htmlmail',
+					    data: data_string,
+					    success: function(json){
+						     var obj = jQuery.parseJSON(json);
+						     console.log(obj['success']);
+                 console.log(obj['error']);
+                $('#error').html(obj['error']);
+						}		
+				  });
+				  return false;
+			  });
+		 });				
+   </script>
    
    
    
