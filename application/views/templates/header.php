@@ -12,38 +12,35 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<link rel="stylesheet" type="text/css" href="css/w3css.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	
-
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
+<!--Ajax request passing form values to php-->	   
    <script>
 	    $(document).ready(function(){
-			  $(document).on('submit', '#details_for_email_link', function(){	
+			  $(document).on('submit', '#details_for_email', function(){	
 				   event.preventDefault();
-				   var form = $('#details_for_email_link');
+				   var form = $('#details_for_email');
 				   var data_string = $(form).serialize();	
 
 				   $.ajax({
 					    type: 'POST',
-					    url: 'https://vmssecurepay.jkamradcliffe.net/index.php/test_email/htmlmail',
+					    url: 'https://vmssecurepay.jkamradcliffe.net/index.php/email/htmlmail',
 					    data: data_string,
 					    success: function(json){
-						     var obj = jQuery.parseJSON(json);
-						     console.log(obj['success']);
-                 console.log(obj['error']);
-                $('#error').html(obj['error']);
-						}		
-				  });
-				  return false;
-			  });
-		 });				
+                var obj = jQuery.parseJSON(json);
+                console.log(obj.success);
+                console.log(obj.error);
+                $('#error').html(obj.error);
+                $('#email_sent_alert').html(obj.success);
+                
+                if ((obj.success) = "Email Sent!!"){
+                  document.getElementById('email_sent').style.display='block';
+                }
+
+                //form.find('#submit').prop('disabled', true);                
+              }		
+				    });
+				    return false;
+			   });
+		  });				
    </script>
    
    
@@ -63,9 +60,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <!--
 	<script>
 		$(document).ready(function(){
-			$(document).on('submit', '#details_for_email_link', function(){	
+			$(document).on('submit', '#details_for_email', function(){	
 			event.preventDefault();
-			var form = $('#details_for_email_link');
+			var form = $('#details_for_email');
 			var data_string = $(form).serialize();	
 				
 				$.ajax({

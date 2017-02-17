@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 header('Access-Control-Allow-Origin: *');
 
 
-class Test_email extends CI_Controller {
+class Email extends CI_Controller {
 
    
   public function htmlmail(){
@@ -42,14 +42,22 @@ class Test_email extends CI_Controller {
     /* If there are no errors, compile and send email */
     else { 
       $data = array(
-        'userName'=> $this->input->post('first_name'),
-        'year'    => '1980'
+        'title'      => $this->input->post('title'),
+        'first_name' => $this->input->post('first_name'),
+        'last_name'  => $this->input->post('last_name'),
+        'email'      => $this->input->post('email'),
+        'agent'      => $this->input->post('agent'),
+        'reference'  => $this->input->post('reference'),
+        'resort'     => $this->input->post('resort'),
+        'amount_due' => $this->input->post('amount_due'),
+        'message'    => $this->input->post('message')
+        //'url' - TO BE COMPLETED
       );		 			 			 
         
-	    // load email library
+	    /* Load CI email library */
 	    $this->load->library('email');
 
-      // prepare email
+      /* prepare email */
       $this -> email
             ->from('james@jkamradcliffe.net', 'Example Inc.')
             ->to('j.kamradcliffe1980@gmail.com')
@@ -57,12 +65,15 @@ class Test_email extends CI_Controller {
             ->message($this->load->view('test_email.php', $data, true))
             ->set_mailtype('html');
 
-      // send email
+      /* Send email */
       $this->email->send();	
+      
+      /* Add messages to response */
       $response['success'] = "Email Sent!!";
       $response['error'] = null;
 
     }
+    /* Return response to AJAX in header.php */
     echo json_encode ($response) ;
     
   }     

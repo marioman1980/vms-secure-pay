@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <section class="w3-container w3-padding-8">
 	<div id="error" style="color:red"></div>
-  <form id="details_for_email_link" action="" method="post">   
+  <form id="details_for_email" action="" method="post">   
 		<!--  
         Start Form Inputs 
         HTML5 validation performed client-side
