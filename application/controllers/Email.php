@@ -51,9 +51,10 @@ class Email extends CI_Controller {
         'resort'     => $this->input->post('resort'),
         'amount_due' => $this->input->post('amount_due'),
         'message'    => $this->input->post('message')
-        //'url' - TO BE COMPLETED
+//        'url' - TO BE COMPLETED
       );		 			 			 
         
+      /* Charset and other preferences */
       $config = array(
         'charset' => 'ISO-8859-1'
       );
@@ -63,10 +64,11 @@ class Email extends CI_Controller {
 
       /* prepare email */
       $this -> email
-            ->from('james@jkamradcliffe.net', 'Example Inc.')
+            ->from('james@jkamradcliffe.net', 'VMS')
             ->to('j.kamradcliffe1980@gmail.com')
-            ->subject('Hello from Example Inc.')
-            ->message($this->load->view('test_email.php', $data, true))
+//            ->cc('james@jkamradcliffe.net')
+            ->subject('Your Payment Details - VMS')
+            ->message($this->load->view('email.php', $data, true))
             ->set_mailtype('html');
 
       /* Send email */
