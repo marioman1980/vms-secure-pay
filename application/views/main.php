@@ -60,3 +60,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	</script>
 
 </section>
+
+<!--Format 'amount due' as currency-->	
+	<script>
+		$('#amount_due' ).focusout(function() {
+			var a = $('#amount_due').val();
+			a = Number(a).toFixed(2);
+			$( "#amount_due" ).val(a);
+			console.log(a);
+		});
+	</script>

@@ -2,7 +2,6 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 header('Access-Control-Allow-Origin: *');
 
-
 class Email extends CI_Controller {
 
    
@@ -41,6 +40,7 @@ class Email extends CI_Controller {
     } 
     /* If there are no errors, compile and send email */
     else { 
+      /* Details from User form */
       $data = array(
         'title'      => $this->input->post('title'),
         'first_name' => $this->input->post('first_name'),
@@ -56,20 +56,22 @@ class Email extends CI_Controller {
         
       /* Charset and other preferences */
       $config = array(
-        'charset' => 'ISO-8859-1'
+        'charset' => 'utf-8'
       );
-      
+     
 	    /* Load CI email library */
-	    $this->load->library('email', $config);
+	    $this->load->library('email');
+      $this->email->initialize($config);
 
       /* prepare email */
       $this -> email
             ->from('james@jkamradcliffe.net', 'VMS')
-            ->to('j.kamradcliffe1980@gmail.com')
+            ->to($data['email'])
 //            ->cc('james@jkamradcliffe.net')
             ->subject('Your Payment Details - VMS')
             ->message($this->load->view('email.php', $data, true))
             ->set_mailtype('html');
+
 
       /* Send email */
       $this->email->send();	
