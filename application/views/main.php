@@ -37,7 +37,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<div class="w3-twothird">
 			<textarea id="message" name="message"></textarea><br><!-- End Form Inputs -->				
 			<input id="submit" name="submit" type="submit" value="Submit"></input>
-			<span> | </span><span id="cancel">Cancel</span>
+			<span> | </span><input id="cancel" type="reset" value="Cancel">
 		</div>
 	 	<span id="success"></span>
 	</form><br>
@@ -67,6 +67,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			var a = $('#amount_due').val();
 			a = Number(a).toFixed(2);
 			$( "#amount_due" ).val(a);
-			console.log(a);
 		});
 	</script>
+
+<!-- Clear form - ensures functionality across all browsers -->
+<script>
+  $('#cancel').click(function(){
+    $('#details_for_email').trigger("reset");
+  })
+</script>

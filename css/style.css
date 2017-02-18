@@ -45,7 +45,10 @@ input[type=number]::-webkit-outer-spin-button {
 	text-decoration: underline;
 	color: 0000ff;
 	cursor: pointer; 
-	cursor: hand
+	cursor: hand;
+  border: none;
+  background-color: Transparent;
+  padding: 0
 }
 #cancel:hover{
 	text-shadow: 0.1px 0.1px #0000ff;
