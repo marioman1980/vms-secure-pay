@@ -58,6 +58,7 @@ class Email extends CI_Controller {
       $config = array(
         'charset' => 'utf-8'
       );
+          
      
 	    /* Load CI email library */
 	    $this->load->library('email');

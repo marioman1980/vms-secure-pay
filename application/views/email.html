@@ -1,3 +1,4 @@
+<?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
@@ -101,6 +102,15 @@ p{
   font-size:16px;
   line-height:160%;
 }
+span{
+  color:#555;
+  font-family:Helvetica, Arial, sans-serif;
+  font-size:16px;
+  line-height:160%;
+}
+        .btn-primary:hover {
+          background-color: #34495e !important; }
+    
 
 </style>
 <script type="colorScheme" class="swatch active">
@@ -134,7 +144,7 @@ p{
                     <td width="200" valign="top" align="center">
                       <div class="contentEditableContainer contentImageEditable" >
                         <div class="contentEditable" >
-                          <img src="https://vmssecurepay.jkamradcliffe.net/images/vms_secure_header.jpg" width="300" height="60"  ata-default="placeholder" alt='Logo'/>
+                          <img src="https://vmssecurepay.jkamradcliffe.net/images/vmslogo.png" width="300" height="100"  ata-default="placeholder" alt='Logo'/>
                         </div>
                       </div>
                     </td>
@@ -165,11 +175,13 @@ p{
                     <td width="500" align="center">
 								      <div class="contentEditableContainer contentTextEditable" >
                         <div class="contentEditable" >
-                           <p >Blog updates for [DATE|0|F j, Y]</p>
+                           <span>booking.com<br>
+                          TQ3R5tR<br>
+                          Torquay<br></span>
                         </div>
                       </div>
 							      </td>
-							      <td width="50">&nbsp;</td>
+							      
 						      </tr>
 					      </table>
 				      </div>
@@ -181,14 +193,13 @@ p{
                       <div class="contentEditableContainer contentTextEditable">
                           <div class="contentEditable" >
                             <p>
-                              [RSS=http://yourwebsite.com/blog/feed/]
-                              <strong>Check out the latest 3 posts from our blog</strong><br />
-                              <br />
+                              Dear Mr Kam-Radcliffe,
+                              <br /><br>
                               Post index '0' refers to the latest post, 1 to the second latest and so on. Change all the links : 'RSS=http://www.yourwebsite.com/blog/feed' for the URL of your blog's RSS feed.<br />
                               <br />
-                              <strong><a target='_blank' href=”[RSS-0-link]”>[RSS-0-title]</a></strong><br />
-                              [RSS-0-description]
-                              [ENDRSS]
+                              <span>Dave Collerton</span><br />
+                              <strong>Reservation Team Management</strong><br>
+                              <strong>Villa Marketing Solutions</strong>
 										        </p>
                           </div>
                         </div>
@@ -197,154 +208,88 @@ p{
 						       </tr>
 					       </table>
 				      </div>
-              <div class='movableContent'>
-                <table cellpadding="0" cellspacing="0" border="0" align="center" width="600">
-                  <tr>
-                    <td width="50">&nbsp;</td>
-                    <td width="500" align="left" style="padding-bottom:15px;">
-                      <div class="contentEditableContainer contentTextEditable">
-                         <div class="contentEditable" >
-											   <p>
-                            [RSS=http://www.yourwebsite.com/blog/feed/]
-                            <strong><a target='_blank' href=”[RSS-1-link]”>[RSS-1-title]</a></strong><br />
-                            [RSS-1-description]
-                            [ENDRSS]
-											   </p>
-                         </div>
-                      </div>
-							     </td>
-							     <td width="50">&nbsp;</td>
-						    </tr>
-              </table>
-            </div>
+
 
 				<div class='movableContent'>
 					<table cellpadding="0" cellspacing="0" border="0" align="center" width="600">
 						<tr>
-							<td width="50">&nbsp;</td>
-							<td width="500" align="left" style="padding-bottom:15px;">
-								<div class="contentEditableContainer contentTextEditable">
-                    <div class="contentEditable" >
-											<p>
-												[RSS=http://www.yourwebsite.com/blog/feed/]
-												<strong><a target='_blank' href=”[RSS-2-link]”>[RSS-2-title]</a></strong><br />
-												[RSS-2-description]
-												[ENDRSS]
-											</p>
-                    </div>
-                  </div>
-							</td>
-							<td width="50">&nbsp;</td>
-						</tr>
-					</table>
-				</div>
-
-				<div class='movableContent'>
-					<table cellpadding="0" cellspacing="0" border="0" align="center" width="600">
-						<tr>
-							<td width="50">&nbsp;</td>
-							<td width="500"  align="center" style="padding-bottom:10px;padding-top:25px;">
-								<div class="contentEditableContainer contentTextEditable" >
-                   <div class="contentEditable" style="color:#181818;font-family:Helvetica, Arial, sans-serif;font-size:22px;line-height: 20px;">
-										  <p style='color:#181818;'>All your emails should have a call to action</p>
-                    </div>
-                  </div>
-							</td>
-							<td width="50">&nbsp;</td>
-						</tr>
+              <td width="50"></td>
+              <td width="500" align="center" height='30'><span>Clik below to complete your payment securely with VMS Secure Payments</span></td>
+              <td width="50"></td>
+            </tr>
+            <tr><td height="20" colspan="3"></td></tr>
 						<tr>
 							<td width="50">&nbsp;</td>
 							<td width="500" align="center" >
+								<table cellpadding="0" cellspacing="0" border="0" align="center" width="250" height="50">
+									<tr>
+										<td class="btn-primary" bgcolor="#3498DB" align="center" style="border-radius:4px;" width="250" height="50">
+											<div class="contentEditableContainer contentTextEditable" >
+                          <div class="contentEditable" style='text-align:center;'>
+                              <a target='_blank' href="[CLIENTS.WEBSITE]" style="color:#fff;text-decoration:none;font-family:Helvetica, Arial, sans-serif;font-size:16px;color:#fff;border-radius:4px;">Complete Payment</a>
+                          </div>
+                      </div>
+										</td>
+									</tr>
+
+								</table>
+							</td>
+							<td width="50">&nbsp;</td>
+						</tr>
+						<tr><td height="10" colspan="3"></td></tr>            
+
+						<tr>
+							<td width="50">&nbsp;</td>
+							<td width="500" align="left" >
 								<div class="contentEditableContainer contentTextEditable" >
                   <div >
-										<p>Have a clear action that your customers should take in every email you send - like "Read more" or "Visit our website" - even if you're just sending them a quick note to say "hi".</p>
+										<p>If you're not directed to the VMS Secure Payments page, copy and paste the following into your browser:</p>
+                    <span><a href="#">https://URL</a></span>
                   </div>
                 </div>
 								
 							</td>
 							<td width="50">&nbsp;</td>
 						</tr>
-						<tr><td colspan="3" height='30'></td></tr>
-						<tr>
-							<td width="50">&nbsp;</td>
-							<td width="500" align="center" >
-								<table cellpadding="0" cellspacing="0" border="0" align="center" width="400" height="50">
-									<tr>
-										<td bgcolor="#ED006F" align="center" style="border-radius:4px;" width="400" height="50">
-											<div class="contentEditableContainer contentTextEditable" >
-                          <div class="contentEditable" style='text-align:center;'>
-                              <a target='_blank' href="[CLIENTS.WEBSITE]" style="color:#fff;text-decoration:none;font-family:Helvetica, Arial, sans-serif;font-size:16px;color:#fff;border-radius:4px;">Read more</a>
-                          </div>
-                      </div>
-										</td>
-									</tr>
-
-								</table>
-							</td>
-							<td width="50">&nbsp;</td>
-						</tr>
-						<tr><td height="10" colspan="3"></td></tr>
+            <tr><td height="20" colspan="3"></td></tr>
 					</table>
 				</div>
 								
 				
 				<div class='movableContent'>				
 					<table cellpadding="0" cellspacing="0" border="0" align="center" width="600">
+
 						<tr>
-							<td width="100%" colspan="2" style="padding-top:100px;">
-								<hr style="height:1px;border:none;color:#333;background-color:#ddd;" />
-							</td>
-						</tr>
-						<tr>
-							<td width="60%" height="70" valign="middle" style="padding-bottom:20px;">
+              <td width="50">&nbsp;</td>
+							<td width="350px" height="70" valign="middle" style="padding-bottom:20px;">
 							<div class="contentEditableContainer contentTextEditable">
 								<div class="contentEditable" >
-									<span style="font-size:13px;color:#181818;font-family:Helvetica, Arial, sans-serif;line-height:200%;">Sent to [email] by [CLIENTS.COMPANY_NAME]</span>
+									<span style="font-size:13px;color:#181818;font-family:Helvetica, Arial, sans-serif;line-height:200%;">Sent to James Kam-Radcliffe by VMS</span>
 									<br/>
-									<span style="font-size:11px;color:#555;font-family:Helvetica, Arial, sans-serif;line-height:200%;">[CLIENTS.ADDRESS] | [CLIENTS.PHONE]</span>
+									<span style="font-size:11px;color:#555;font-family:Helvetica, Arial, sans-serif;line-height:200%;">Tel: 01234 567891<br>
+                  Address: 123 The Street, Town, Postcode</span>
 									<br/>
-									<span style="font-size:13px;color:#181818;font-family:Helvetica, Arial, sans-serif;line-height:200%;">
-									<a target='_blank' href="[SHOWEMAIL]" style="text-decoration:none;color:#555">Open in your browser</a></span>
-									<br>
-									<span style="font-size:13px;color:#181818;font-family:Helvetica, Arial, sans-serif;line-height:200%;">
-									<a target='_blank' href="[FORWARD]" style="text-decoration:none;color:#555">Foward to a friend</a></span>
-									<br/>
-									<span style="font-size:13px;color:#181818;font-family:Helvetica, Arial, sans-serif;line-height:200%;">
-									<a target='_blank' href="[UNSUBSCRIBE]" style="text-decoration:none;color:#555">Click here to unsubscribe</a></span>
+
 								</div>
 							</div>
 								
 							</td>
-							<td width="40%" height="70" align="right" valign="top" align='right' style="padding-bottom:20px;">
-								<table width="100%" border="0" cellspacing="0" cellpadding="0" align='right'>
+							<td height="70" align="right" valign="top" align='right' style="padding-bottom:20px;">
+								<table border="0" cellspacing="0" cellpadding="0" align='right'>
 									<tr>
-										<td width='57%'></td>
-										<td valign="top" width='34'>
+
+										<td valign="top">
 											<div class="contentEditableContainer contentFacebookEditable" style='display:inline;'>
                           <div class="contentEditable" >
-                              <img src="https://vmssecurepay.jkamradcliffe.net/images/facebook.png" data-default="placeholder" data-max-width="30" width='30' height='30' alt='facebook' style='margin-right:40x;' data-customIcon="true" >
+                              <img src="https://vmssecurepay.jkamradcliffe.net/images/vms_secure_header.jpg" width='150' height='30' alt='facebook'>
                           </div>
                       </div>
 										</td>
-										<td valign="top" width='34'>
-											<div class="contentEditableContainer contentTwitterEditable" style='display:inline;'>
-                          <div class="contentEditable" >
-                            <img src="https://vmssecurepay.jkamradcliffe.net/images/twitter.png" data-default="placeholder" data-max-width="30" width='30' height='30' alt='twitter' style='margin-right:40x;'>
-                          </div>
-                        </div>
-										</td>
-										<td valign="top" width='34'>
-											<div class="contentEditableContainer contentImageEditable" style='display:inline;'>
-                          <div class="contentEditable" >
-                            <a target='_blank' href="#" data-default="placeholder"  style="text-decoration:none;">
-													 <img src="https://vmssecurepay.jkamradcliffe.net/images/pinterest.png" width="30" height="30" data-max-width="30" alt='Pinterest' style='margin-right:40x;' data-customIcon="true" />
-												</a>
-                        </div>
-                      </div>
 										</td>
 									</tr>
 								</table>
 							</td>
+              <td width="50">&nbsp;</td>
 						</tr>
 					</table>
 				</div>
