@@ -125,7 +125,7 @@ span{
 </script>
 
 </head>
-<body>
+<body><!-- Main Container -->
 	<table cellpadding="0" width="100%" cellspacing="0" border="0" id="backgroundTable" class='bgBody'>
     <tr>
 		  <td>
@@ -141,13 +141,13 @@ span{
                   </tr>
                   <tr>
                     <td width="200" valign="top">&nbsp;</td>
-                    <td width="200" valign="top" align="center">
+                    <td width="200" valign="top" align="center"><!-- Logo -->
                       <div class="contentEditableContainer contentImageEditable" >
                         <div class="contentEditable" >
                           <img src="https://vmssecurepay.jkamradcliffe.net/images/vmslogo.png" width="300" height="100"  ata-default="placeholder" alt='Logo'/>
                         </div>
                       </div>
-                    </td>
+                    </td><!-- End Logo -->
                     <td width="200" valign="top">&nbsp;</td>
 						      </tr>
 						      <tr height="5">
@@ -172,7 +172,7 @@ span{
 						      </tr>
 						      <tr>
                     <td width="50">&nbsp;</td>
-                    <td width="500" align="center">
+                    <td width="500" align="center"><!-- Content -->
 								      <div class="contentEditableContainer contentTextEditable" >
                         <div class="contentEditable" >
                            <span><?php echo $agent; ?><br>
@@ -210,7 +210,7 @@ span{
 				      </div>
 
 
-				<div class='movableContent'>
+				<div class='movableContent'><!-- Payment Info -->
 					<table cellpadding="0" cellspacing="0" border="0" align="center" width="600">
 						<tr>
               <td width="50"></td>
@@ -222,14 +222,14 @@ span{
 							<td width="50">&nbsp;</td>
 							<td width="500" align="center" >
 								<table cellpadding="0" cellspacing="0" border="0" align="center" width="250" height="50">
-									<tr>
+									<tr><!-- CTA -->
 										<td class="btn-primary" bgcolor="#3498DB" align="center" style="border-radius:4px;" width="250" height="50">
 											<div class="contentEditableContainer contentTextEditable" >
                           <div class="contentEditable" style='text-align:center;'>
                               <a target='_blank' href="https://www.jkamradcliffe.net" style="color:#fff;text-decoration:none;font-family:Helvetica, Arial, sans-serif;font-size:16px;color:#fff;border-radius:4px;">Complete Payment</a>
                           </div>
                       </div>
-										</td>
+										</td><!-- End CTA -->
 									</tr>
 
 								</table>
@@ -253,12 +253,12 @@ span{
 						</tr>
             <tr><td height="20" colspan="3"></td></tr>
 					</table>
-				</div>
+				</div><!-- End Content -->
 								
 				
 				<div class='movableContent'>				
 					<table cellpadding="0" cellspacing="0" border="0" align="center" width="600">
-
+              <!-- Footer Info -->
 						<tr>
               <td width="50">&nbsp;</td>
 							<td width="350px" height="70" valign="middle" style="padding-bottom:20px;">
