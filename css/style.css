@@ -20,8 +20,19 @@ form, #header-img{
 	margin-bottom:10px
 }
 .form_readonly{
-	background-color:#FBF6D9;color:#736F6E
+	background-color:#f8f8f8;
+  color:#736F6E;
+  border:1px solid #cccccc
 }
+.form_readonly:hover{
+  box-shadow: none
+}
+
+select:hover, input .shadow:hover{
+  border:1px solid #cccccc;
+  box-shadow: -1px 1px 1px #888888
+}
+
 /* Remove spinner from number inputs */
 input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button { 
@@ -67,4 +78,9 @@ input[type=number]::-webkit-outer-spin-button {
 	opacity: 0.2;
 	text-align: center;
 	pointer-events:none;
+}
+
+#privacy_policy{
+  float: right;
+  color: #0000ff
 }
