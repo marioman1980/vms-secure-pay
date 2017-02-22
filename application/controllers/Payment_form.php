@@ -36,15 +36,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     
       public function populate_form(){
         $this->load->view('templates/header');
-        /* Convert serialixed url segment back to array */
+        /* Convert serialized url segment back to array */
         $data = unserialize(urldecode($this->uri->segment(3)));
-        if ($data === true){
+        if ($data !== false){
           /* Load payment form, passing details from $data array */
-          $this->load->view('payment_form', $data);        
-        }else{
-          $this->load->view('custom_url_error'); 
+          $this->load->view('payment_form.php', $data);        
+        } else {
+          $this->load->view('custom_url_error.php');        
         }
-
         $this->load->view('templates/footer'); 
       }
       
