@@ -144,7 +144,7 @@ span{
                     <td width="200" valign="top" align="center"><!-- Logo -->
                       <div class="contentEditableContainer contentImageEditable" >
                         <div class="contentEditable" >
-                          <img src="https://vmssecurepay.jkamradcliffe.net/images/vmslogo.png" width="300" height="100"  ata-default="placeholder" alt='Logo'/>
+                          <img src="https://vmssecurepay.jkamradcliffe.net/images/vmslogo.png" width="225" height="75"  ata-default="placeholder" alt='Logo'/>
                         </div>
                       </div>
                     </td><!-- End Logo -->
