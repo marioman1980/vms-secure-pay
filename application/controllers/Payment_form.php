@@ -38,8 +38,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         $this->load->view('templates/header');
         /* Convert serialixed url segment back to array */
         $data = unserialize(urldecode($this->uri->segment(3)));
-        /* Load payment form, passing details from $data array */
-        $this->load->view('payment_form', $data);
+        if ($data === true){
+          /* Load payment form, passing details from $data array */
+          $this->load->view('payment_form', $data);        
+        }else{
+          $this->load->view('custom_url_error'); 
+        }
+
         $this->load->view('templates/footer'); 
       }
       
