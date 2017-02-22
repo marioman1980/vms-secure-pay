@@ -25,7 +25,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <input class="w3-twothird input_margin form_readonly" id="agent_reference" name="agent_reference" type="text" value="<?php echo $reference; ?>" required readonly></input><br><br>
 <!--    <input class="w3-third input_margin form_readonly" id="reference" name="reference" type="hidden" readonly></input>-->
     <label class="w3-third">Amount Due</label>
-    <input class="w3-twothird input_margin form_readonly" id="amount_due" name="amount_due" type="number" step="any" value="<?php echo $amount_due; ?>" required readonly></input><br><br>
+    <input class="w3-twothird input_margin form_readonly" id="amount_due" name="amount_due" type="text" value="<?php echo $amount_due; ?>" required readonly></input><br><br>
     <label class="w3-third">Cardholder's Name</label>
     <input class="w3-twothird input_margin" id="cardholder" name="cardholder" type="text" data-stripe="name"></input><br><br>			
     <label class="w3-third">Card Number</label>
