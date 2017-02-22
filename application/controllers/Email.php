@@ -82,6 +82,7 @@ class Email extends CI_Controller {
             ->to($data['email'])
 //            ->cc('james@jkamradcliffe.net')
             ->subject('Your Payment Details - VMS')
+        /* Body of email includes values extracted from form stored in $data */
             ->message($this->load->view('email.php', $data, true))
             ->set_mailtype('html');
 

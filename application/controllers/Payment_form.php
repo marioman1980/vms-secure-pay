@@ -1,18 +1,7 @@
 <?php 
 defined('BASEPATH') OR exit('No direct script access allowed');
     class Payment_form extends CI_Controller {
-  
-		/*
-		* Index Page for this controller.
-		*
-		* Maps to the following URL
-		* 		http://example.com/index.php/main
-		*	- or -
-		* 		http://example.com/index.php/main/index
-		*	- or -
-		* Since this controller is set as the default controller in config/routes.php, 
-		* it's displayed at root of site folder : https://vmssecurepay.jkamradcliffe.net
-		*/     
+   
       public function index() { 
         /* Load page comprising header and form content */
         $this->load->view('templates/header');
@@ -28,6 +17,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         $this->load->view('templates/footer');
       }	
 
+      /* Load privacy policy */
       public function privacy_policy(){
         $this->load->view('templates/header');
         $this->load->view('privacy_policy');
@@ -42,6 +32,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           /* Load payment form, passing details from $data array */
           $this->load->view('payment_form.php', $data);        
         } else {
+          /* If url is not valid (likely user has tried to change it manually),
+           * load custom(basic) error  view.
+           *
+           * This will prevent user changinging values.
+           *
+           * CI PHP error can be disabled in index.php by changing environment from development to production
+           */
           $this->load->view('custom_url_error.php');        
         }
         $this->load->view('templates/footer'); 
