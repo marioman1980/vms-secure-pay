@@ -50,8 +50,8 @@ class Email extends CI_Controller {
         'reference'  => $this->input->post('reference'),
         'resort'     => $this->input->post('resort'),
         'amount_due' => $this->input->post('amount_due'),
-        'message'    => $this->input->post('message')
-//        'url' - TO BE COMPLETED
+        'message'    => $this->input->post('message'),
+        'url'        => 'https://vmssecurepay.jkamradcliffe.net/index.php/payment_form/populate_form/Mr/James'
       );		 			 			 
         
       /* Charset and other preferences */

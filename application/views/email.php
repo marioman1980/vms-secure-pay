@@ -6,7 +6,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-	<title>[SUBJECT]</title>
+<!--	<title>[SUBJECT]</title>-->
 	<style type="text/css">
 /*    table, tr, td{border: solid 1px black}*/
 	#outlook a {padding:0;}
@@ -226,7 +226,7 @@ span{
 										<td class="btn-primary" bgcolor="#3498DB" align="center" style="border-radius:4px;" width="250" height="50">
 											<div class="contentEditableContainer contentTextEditable" >
                           <div class="contentEditable" style='text-align:center;'>
-                              <a target='_blank' href="https://www.jkamradcliffe.net" style="color:#fff;text-decoration:none;font-family:Helvetica, Arial, sans-serif;font-size:16px;color:#fff;border-radius:4px;">Complete Payment</a>
+                              <a target='_blank' href="<?php echo $url; ?>" style="color:#fff;text-decoration:none;font-family:Helvetica, Arial, sans-serif;font-size:16px;color:#fff;border-radius:4px;">Complete Payment</a>
                           </div>
                       </div>
 										</td><!-- End CTA -->
