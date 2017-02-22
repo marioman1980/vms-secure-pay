@@ -50,15 +50,27 @@ class Email extends CI_Controller {
         'reference'  => $this->input->post('reference'),
         'resort'     => $this->input->post('resort'),
         'amount_due' => $this->input->post('amount_due'),
-        'message'    => $this->input->post('message'),
-        'url'        => 'https://vmssecurepay.jkamradcliffe.net/index.php/payment_form/populate_form/Mr/James'
+        'message'    => $this->input->post('message')
       );		 			 			 
         
+      /* Prepare array for url */
+      $data = urlencode(serialize($data));
+      
+      /* Create url. 
+       * populate_form will be function called from payment_form page.
+       * Encoded $data array passed as parameter to populate_form.
+       * Unlike using query string, it will not be possible to edit url without causing error
+       */
+      $url = 'https://vmssecurepay.jkamradcliffe.net/index.php/payment_form/populate_form/'.$data;
+      
+      /* Convert $data back to array and append url */
+      $data = unserialize(urldecode($data));
+      $data['url'] = $url;
+      
       /* Charset and other preferences */
       $config = array(
         'charset' => 'utf-8'
-      );
-          
+      );         
      
 	    /* Load CI email library */
 	    $this->load->library('email');

@@ -17,20 +17,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <label class="w3-third">First name</label>
     <input class="w3-twothird input_margin form_readonly" id="first_name" name="first_name" type="text" value="<?php echo $first_name; ?>" required readonly></input><br><br>
     <label class="w3-third">Last name</label>
-    <input class="w3-twothird input_margin form_readonly" id="last_name" name="last_name" type="text" required readonly></input>	<br><br>		
+    <input class="w3-twothird input_margin form_readonly" id="last_name" name="last_name" type="text" value="<?php echo $last_name; ?>" required readonly></input>	<br><br>		
     <label class="w3-third">Email</label>
-    <input class="w3-twothird input_margin form_readonly" id="email" name="email" type="email" required readonly></input><br><br>		
+    <input class="w3-twothird input_margin form_readonly" id="email" name="email" type="email" value="<?php echo $email; ?>" required readonly></input><br><br>		
     <h4>Payment Details</h4>			
     <label class="w3-third">Reference</label>
-    <input class="w3-twothird input_margin form_readonly" id="agent_reference" name="agent_reference" type="text" required readonly></input><br><br>
+    <input class="w3-twothird input_margin form_readonly" id="agent_reference" name="agent_reference" type="text" value="<?php echo $reference; ?>" required readonly></input><br><br>
 <!--    <input class="w3-third input_margin form_readonly" id="reference" name="reference" type="hidden" readonly></input>-->
     <label class="w3-third">Amount Due</label>
-    <input class="w3-twothird input_margin form_readonly" id="amount_due" name="amount_due" type="number" step="any" required readonly></input><br><br>
+    <input class="w3-twothird input_margin form_readonly" id="amount_due" name="amount_due" type="number" step="any" value="<?php echo $amount_due; ?>" required readonly></input><br><br>
     <label class="w3-third">Cardholder's Name</label>
     <input class="w3-twothird input_margin" id="cardholder" name="cardholder" type="text" data-stripe="name"></input><br><br>			
     <label class="w3-third">Card Number</label>
   <!--Sensitive fields have no name as details will not be passed to server-->	
-    <input class="w3-twothird input_margin cc-number" id="card_number" type="tel" title="Please enter a valid card number" autocomplete="cc-number" placeholder="  &#8226&#8226&#8226&#8226 &#8226&#8226&#8226&#8226 &#8226&#8226&#8226&#8226" data-stripe="number" required>
+    <input class="w3-twothird input_margin cc-number" id="card_number" type="tel" title="Please enter a valid card number" autocomplete="cc-number" placeholder=" &#8226&#8226&#8226&#8226 &#8226&#8226&#8226&#8226 &#8226&#8226&#8226&#8226 &#8226&#8226&#8226&#8226" data-stripe="number" required>
     <label class="w3-third">Expiry Date</label>		
     <div class="w3-twothird input_margin">
       <select id="expiry_month" data-stripe="exp_month" required> 
