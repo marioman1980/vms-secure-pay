@@ -35,7 +35,7 @@ class Email extends CI_Controller {
     
     /* If there are errors, add messages to response */
     if ($this->form_validation->run() == FALSE) { 
-      $response['success'] = null;
+      $response['success'] = "There are errors in the form";
       $response['error'] = validation_errors();
     } 
     /* If there are no errors, compile and send email */
