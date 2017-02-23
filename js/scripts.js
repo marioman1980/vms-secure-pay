@@ -17,9 +17,8 @@
                 $('#error').html(obj.error);
                 $('#email_sent_alert').html(obj.success);
                 
-                if ((obj.success) = "Email Sent!!"){
-                  document.getElementById('email_sent').style.display='block';
-                }
+                $('#email_sent').show();
+                //document.getElementById('email_sent').style.display='block';
 
                 //form.find('#submit').prop('disabled', true);                
               }		
