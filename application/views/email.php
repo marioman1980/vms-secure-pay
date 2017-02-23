@@ -285,12 +285,23 @@ span{
                           </div>
                       </div>
 										</td>
-										</td>
-									</tr>
-								</table>
-							</td>
+										
+                  </tr>
+                </table>
+              </td>
+              
+									
+								
+<!--							</td>-->
               <td width="50">&nbsp;</td>
 						</tr>
+            <tr>
+              <td width="50">&nbsp;</td>
+              <td>Email template adapted from: 
+                <span style="font-size:11px;color:#555;font-family:Helvetica, Arial, sans-serif;line-height:200%;"><a href="http://templates.cakemail.com/details/read%20me">templates.cakemail.com</a></span>
+              </td>
+              <td width="150">&nbsp;</td>
+            </tr>
 					</table>
 				</div>
 
