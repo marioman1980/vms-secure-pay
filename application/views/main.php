@@ -20,24 +20,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			?>
 		</select><br><br>			
 	 	<label class="w3-third">First Name</label>
- 		<input class="w3-twothird" id="first_name" name="first_name" type="text" required /><br><br>
+ 		<input class="w3-twothird shadow" id="first_name" name="first_name" type="text" required /><br><br>
  		<label class="w3-third">Last Name</label>
-	 	<input class="w3-twothird" id="last_name" name="last_name" type="text" required /><br><br>
+	 	<input class="w3-twothird shadow" id="last_name" name="last_name" type="text" required /><br><br>
 	 	<label class="w3-third">Email</label>
-	 	<input class="w3-twothird" id="email" name="email" type="email" required /><br><br>
+	 	<input class="w3-twothird shadow" id="email" name="email" type="email" required /><br><br>
 	 	<label class="w3-third">Agent</label>
-	 	<input class="w3-twothird" id="agent" name="agent" type="text" required /><br><br>	
+	 	<input class="w3-twothird shadow" id="agent" name="agent" type="text" required /><br><br>	
 	 	<label class="w3-third">Reference</label>
-	 	<input class="w3-twothird" id="reference" name="reference" type="text" required /><br><br>					
+	 	<input class="w3-twothird shadow" id="reference" name="reference" type="text" required /><br><br>					
 	 	<label class="w3-third">Resort</label>
-	 	<input class="w3-twothird" id="resort" name="resort" type="text" required /><br><br>				
+	 	<input class="w3-twothird shadow" id="resort" name="resort" type="text" required /><br><br>				
 	 	<label class="w3-third">Amount Due</label>
-	 	<input class="w3-twothird" id="amount_due" name="amount_due" type="number" step="any" required /><br><br>
+	 	<input class="w3-twothird shadow" id="amount_due" name="amount_due" type="text" step="any" required /><br><br>
 	 	<label class="w3-third">Message</label>
 		<div class="w3-twothird">
-			<textarea id="message" name="message"></textarea><br><!-- End Form Inputs -->				
+			<textarea id="message" class="shadow" name="message"></textarea><br><!-- End Form Inputs -->				
 			<input id="submit" name="submit" type="submit" value="Submit"></input>
-			<span> | </span><input id="cancel" type="reset" value="Cancel">
+			<span> | </span><input id="cancel" type="button" value="Cancel">
 		</div>
 	 	<span id="success"></span>
 	</form><br>
@@ -52,14 +52,28 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		</div>
   </div>
 <!-- End Email Sent alert modal -->
-   
-  <script>// Close Modal
-	   $('#close-modal').click(function(){
-		  	$('#email_sent').css('display', 'none');
-		 })			
-	</script>
 
+<!-- Start Reset form confirm modal -->
+   <div id="reset_form" class="w3-modal">
+      <div class="w3-modal-content" style="width:300px">
+			 <div class="w3-container" style="width:300px">
+				 <span id="close-reset-modal" class="w3-closebtn">&times;</span>
+			 	 <p id="confirm_cancel">Are you sure you want to cancel?</p>
+         <div><button id="cancel-yes" class="btn_cancel">Yes</button> | <button id="cancel-no" class="btn_cancel">No</button></div>
+			 </div>
+		</div>
+  </div>
+<!-- End Reset form confirm modal -->
 </section>
+   
+<!-- Close email sent modal -->
+<script>
+   $('#close-modal').click(function(){
+      $('#email_sent').hide();
+   }); 
+</script>
+
+
 
 <!--Format 'amount due' as currency-->	
 	<script>
@@ -70,9 +84,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		});
 	</script>
 
-<!-- Clear form - ensures functionality across all browsers -->
+<!-- Clear form - HTML5 type="reset" not used as it doesn't allow for confirmation -->
 <script>
   $('#cancel').click(function(){
+    $('#reset_form').show();
+  });
+  
+  $('#cancel-yes').click(function(){
     $('#details_for_email').trigger("reset");
-  })
+    $('#reset_form').hide();
+  });
+   $('#cancel-no').click(function(){
+      $('#reset_form').hide();
+   });	  
+  
+   $('#close-reset-modal').click(function(){
+      $('#reset_form').hide();
+   });	     
 </script>
