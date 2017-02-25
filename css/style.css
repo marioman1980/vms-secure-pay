@@ -33,6 +33,15 @@ form, #header-img, #privacy-policy{
   box-shadow: none
 }
 
+.field{
+  border: 1px solid #cccccc;
+  padding: 5px 
+}
+label{
+  padding: 5px
+}
+
+
 select:hover, .shadow:hover{
   border:1px solid #cccccc;
   box-shadow: -1px 1px 1px #888888

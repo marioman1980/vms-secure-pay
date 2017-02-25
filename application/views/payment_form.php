@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 
-  <form id="payment_form" name="my_form" action="php/charge_customer.php" method="post">
+  <form id="payment_form" name="payment_form_form" action="php/charge_customer.php" method="post">
     <span class="payment_errors" style="color:red"></span>
     <h4>Your Details</h4>
 <!--  
@@ -28,16 +28,28 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <input class="w3-twothird input_margin form_readonly" id="amount_due" name="amount_due" type="text" value="<?php echo $amount_due; ?>" required readonly></input><br><br>
     <label class="w3-third">Cardholder's Name</label>
     <input class="w3-twothird input_margin shadow" id="cardholder" name="cardholder" type="text" data-stripe="name"></input><br><br>
-    <label class="w3-third">Card Number</label>
+
+<!--CARD-->
+
+    <label class="w3-third" for="card-element">Card Number</label>
+    <div id="card-element" class="w3-twothird field input_margin shadow"></div>
+
+
+
   <!--Sensitive fields have no name as details will not be passed to server-->	
-    <input class="w3-twothird input_margin cc-number shadow" id="card_number" type="tel" title="Please enter a valid card number" autocomplete="cc-number" placeholder=" &#8226&#8226&#8226&#8226 &#8226&#8226&#8226&#8226 &#8226&#8226&#8226&#8226 &#8226&#8226&#8226&#8226" data-stripe="number" required>
+<!--    <input class="w3-twothird input_margin cc-number shadow" id="card_number" type="tel" title="Please enter a valid card number" autocomplete="cc-number" placeholder=" &#8226&#8226&#8226&#8226 &#8226&#8226&#8226&#8226 &#8226&#8226&#8226&#8226 &#8226&#8226&#8226&#8226" data-stripe="number" required>-->
+
+
+
+
+<!--
     <label class="w3-third">Expiry Date</label>		
     <div class="w3-twothird input_margin">
       <select id="expiry_month" data-stripe="exp_month" required> 
-        <option value="" disabled selected>MM</option><!-- JS used to populate -->
+        <option value="" disabled selected>MM</option> JS used to populate 
       </select>
       <select id="expiry_year" data-stripe="exp_year" required> 
-        <option value="" disabled selected>YY</option><!-- JS used to populate -->
+        <option value="" disabled selected>YY</option> JS used to populate 
       </select><br>
     </div>
     <div class="w3-row">
@@ -46,6 +58,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
     <input id="submit_button" name="submit_button" type="submit" value="Submit"></input> 	
     <a href="https://vmssecurepay.jkamradcliffe.net/index.php/payment_form/privacy_policy" id="privacy-policy-link"><p>Privacy Policy</p></a>
+-->
 
   </form>
 </div>
@@ -77,7 +90,31 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </script>
 
 <!-- STRIPE PAYMENT -->
+<script>
+  /*Publishable API key */
+  var stripe = Stripe('pk_test_hf3cRYT5E8wlB3f5X6b75d4R');
+  var elements = stripe.elements();
+  
+  // Custom styling can be passed to options when creating an Element.
+  var style = {
+    base: {
+      // Add your base input styles here. For example:
+      '::placeholder': {
+        color: '#CFD7E0',
+      }
+    }
+  };
 
+
+  // Create an instance of the card Element
+  var card = elements.create('card', {style: style});
+
+  // Add an instance of the card Element into the `card-element` <div>
+  card.mount('#card-element');  
+  
+
+  
+</script>
 
 
 
