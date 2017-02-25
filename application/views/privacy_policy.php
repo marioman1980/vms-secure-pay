@@ -35,7 +35,7 @@
 <!--  <strong>Payment transactions are always encrypted.</strong>-->
 
   <h2>Disclosing your information</h2>
-  <p>We may pass on your personal information if we have a legal obligation to do so.</p>
+  <p>We may pass on your personal information if we have a legal obligation to do so. This includes exchanging information with other government departments for legal reasons.</p>
 
   <h2>Your rights</h2>
   <p>You can find out what information we hold about you, and ask us not to use any of the information we collect.</p>
