@@ -46,11 +46,8 @@ class Email extends CI_Controller {
         'first_name' => $this->input->post('first_name'),
         'last_name'  => $this->input->post('last_name'),
         'email'      => $this->input->post('email'),
-        'agent'      => $this->input->post('agent'),
         'reference'  => $this->input->post('reference'),
-        'resort'     => $this->input->post('resort'),
-        'amount_due' => $this->input->post('amount_due'),
-        'message'    => $this->input->post('message')
+        'amount_due' => $this->input->post('amount_due')
       );		 			 			 
         
       /* Prepare array for url */
@@ -65,6 +62,9 @@ class Email extends CI_Controller {
       
       /* Convert $data back to array and append url */
       $data = unserialize(urldecode($data));
+      $data['agent'] = $this->input->post('agent');
+      $data['resort'] = $this->input->post('resort');
+      $data['message'] = $this->input->post('message');
       $data['url'] = $url;
       
       /* Charset and other preferences */
@@ -80,7 +80,7 @@ class Email extends CI_Controller {
       $this -> email
             ->from('james@jkamradcliffe.net', 'VMS')
             ->to($data['email'])
-//            ->cc('james@jkamradcliffe.net')
+//            ->cc('james@jkamradcliffe.net')/* Comment out for testing */
             ->subject('Your Payment Details - VMS')
         /* Body of email includes values extracted from form stored in $data */
             ->message($this->load->view('email.php', $data, true))
