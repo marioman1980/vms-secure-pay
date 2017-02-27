@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 
-  <form id="payment_form" name="payment_form_form" action="php/charge_customer.php" method="post">
+  <form id="payment_form" name="payment_form" action="" method="post">
     <span class="payment_errors" style="color:red"></span>
     <h4>Your Details</h4>
 <!--  
@@ -91,6 +91,40 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       $('#card-errors').html('');
     }
   });  
+  
+/*
+* The next 3 functions are concerned with tokenizing
+* Customer credit / debit card details and submitting 
+* the form. with the token, to the server
+*/  
+  function stripeTokenHandler(token) {
+    /* Insert token using hidden field so that i can be submitted */
+    $('#payment_form').append($('<input type="hidden" name="stripeToken">').val(token.id));
+    //alert(token.id);
+
+    /* Submit the form */
+    $('#payment_form').get(0).submit();
+  }  
+  
+  function createToken() {
+    stripe.createToken(card).then(function(result) {
+      if (result.error) {
+        /* Inform user if there's an error */
+        $('#card-errors').html(result.error.message);
+      } else {
+        /* Call function to submit form with token */
+        stripeTokenHandler(result.token);
+        //alert(result.token.id);
+      }
+    });
+  }; 
+
+  /* Listen for submit event - call function which invokes token creation and form submission */
+  $('#payment_form').submit(function(e){
+    e.preventDefault();
+    createToken();
+  });  
+  
 </script>
 
 
