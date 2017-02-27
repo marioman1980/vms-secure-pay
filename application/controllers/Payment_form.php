@@ -46,7 +46,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       }
       
       public function process_payment(){
-        //\Stripe\Stripe::setApiKey("sk_test_uzOEZerf4OU9Hgg0aWQdpQpG");/* Secret API key */
+        require_once APPPATH."libraries/stripe/init.php";
+        \Stripe\Stripe::setApiKey("sk_test_uzOEZerf4OU9Hgg0aWQdpQpG");/* Secret API key */
         $response = array();
 
         /* Load form helper */ 
