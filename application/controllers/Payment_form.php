@@ -24,6 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         $this->load->view('templates/footer');      
       }  
     
+      /* Called from email */
       public function populate_form(){
         $this->load->view('templates/header');
         /* Convert serialized url segment back to array */
@@ -35,13 +36,36 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           /* If url is not valid (likely user has tried to change it manually),
            * load custom(basic) error  view.
            *
-           * This will prevent user changinging values.
+           * This will prevent user changing values.
            *
            * CI PHP error can be disabled in index.php by changing environment from development to production
            */
           $this->load->view('custom_url_error.php');        
         }
         $this->load->view('templates/footer'); 
+      }
+      
+      public function process_payment(){
+        //\Stripe\Stripe::setApiKey("sk_test_uzOEZerf4OU9Hgg0aWQdpQpG");/* Secret API key */
+        $response = array();
+
+        /* Load form helper */ 
+        $this->load->helper(array('form'));
+
+        /* Load form validation library */ 
+        $this->load->library('form_validation');	        
+        
+        $this->form_validation->set_rules('cardholder', 'Cardholder Name', array('required', 'trim', 'htmlspecialchars', 'regex_match[/^[a-zA-Z \-]*$/]'));
+        
+        if ($this->form_validation->run() == FALSE) { 
+          $response['success'] = "There are errors in the form";
+          $response['error'] = validation_errors();
+        }else{
+          $response['success'] = "Success";
+          $response['error'] = null;
+        }
+        
+        echo json_encode ($response) ;
       }
       
   }   

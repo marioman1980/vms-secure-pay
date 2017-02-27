@@ -97,33 +97,72 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 * Customer credit / debit card details and submitting 
 * the form. with the token, to the server
 */  
-  function stripeTokenHandler(token) {
-    /* Insert token using hidden field so that i can be submitted */
-    $('#payment_form').append($('<input type="hidden" name="stripeToken">').val(token.id));
-    //alert(token.id);
-
-    /* Submit the form */
-    $('#payment_form').get(0).submit();
-  }  
   
-  function createToken() {
+  $('#submit_button').click(function(e){
+    e.preventDefault(); /* Prevent form submission */
+    /* Create token */
     stripe.createToken(card).then(function(result) {
       if (result.error) {
         /* Inform user if there's an error */
         $('#card-errors').html(result.error.message);
       } else {
-        /* Call function to submit form with token */
-        stripeTokenHandler(result.token);
-        //alert(result.token.id);
+        /* Insert token using hidden field so that it can be submitted */
+        $('#payment_form').append($('<input type="hidden" name="stripeToken">').val(result.token.id));
+        $('#payment_form').submit();         
       }
-    });
-  }; 
+    }); 
+  });
+ 
+  $(document).ready(function(){
+    $(document).on('submit', '#payment_form', function(){	
+      event.preventDefault();
+      var form = $('#payment_form');
+      var data_string = $(form).serialize();	
+      $.ajax({
+        type: 'POST',
+        url: 'https://vmssecurepay.jkamradcliffe.net/index.php/payment_form/process_payment',
+        data: data_string,
+        success: function(json){
+          var obj = jQuery.parseJSON(json);
+          console.log(obj.success);
+          $('#card-errors').html(obj.success);
 
-  /* Listen for submit event - call function which invokes token creation and form submission */
-  $('#payment_form').submit(function(e){
-    e.preventDefault();
-    createToken();
-  });  
+        }		
+      });
+
+      return false;
+    });
+  });		
+  
+  
+  
+//  function stripeTokenHandler(token) {
+//    /* Insert token using hidden field so that i can be submitted */
+//    $('#payment_form').append($('<input type="hidden" name="stripeToken">').val(token.id));
+//    alert(token.id);
+//
+//    /* Submit the form */
+//    $('#payment_form').get(0).submit();
+//  }  
+//  
+//  function createToken() {
+//    stripe.createToken(card).then(function(result) {
+//      if (result.error) {
+//        /* Inform user if there's an error */
+//        $('#card-errors').html(result.error.message);
+//      } else {
+//        /* Call function to submit form with token */
+//        stripeTokenHandler(result.token);
+//        //alert(result.token.id);
+//      }
+//    });
+//  }; 
+//
+//  /* Listen for submit event - call function which invokes token creation and form submission */
+//  $('#payment_form').submit(function(e){
+//    e.preventDefault();
+//    createToken();
+//  });  
   
 </script>
 
