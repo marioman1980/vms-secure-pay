@@ -85,11 +85,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   
   /* Listen to change event and display error if invalid card details are entered */
   card.addEventListener('change', function(event) {
-    var displayError = document.getElementById('card-errors');
     if (event.error) {
-      displayError.textContent = event.error.message;
+      $('#card-errors').html(event.error.message);
     } else {
-      displayError.textContent = '';
+      $('#card-errors').html('');
     }
   });  
 </script>
