@@ -31,7 +31,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
     <div class="w3-row">
       <label class="w3-third">Reference</label>
-      <input class="w3-twothird field form_readonly" id="agent_reference" name="agent_reference" type="text" value="<?php echo $reference; ?>" required readonly></input>
+      <input class="w3-twothird field form_readonly" id="reference" name="reference" type="text" value="<?php echo $reference; ?>" required readonly></input>
   <!--    <input class="w3-third input_margin form_readonly" id="reference" name="reference" type="hidden" readonly></input>-->
     </div>
     <div class="w3-row">
@@ -40,26 +40,30 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
     <div class="w3-row">
       <label class="w3-third">Cardholder's Name</label>
-      <input class="w3-twothird field shadow" id="cardholder" name="cardholder" type="text" data-stripe="name"></input>
+      <input class="w3-twothird field shadow" id="cardholder" name="cardholder" type="text" data-stripe="name" required></input>
     </div>
     <div class="w3-row">
-      <label class="w3-third" for="card-element">Card Number</label>
+      <label class="w3-third" for="card-element">Card Details</label>
       <div class="w3-twothird">
         <!-- CARD - Stripe Element mounted to div -->
         <div id="card-element" class="field shadow"></div> 
         <input id="submit_button" name="submit_button" type="submit" value="Submit"></input> 	
         <button id="privacy-policy-link"><a href="https://vmssecurepay.jkamradcliffe.net/index.php/payment_form/privacy_policy">Privacy Policy</a></button>  <br> 
         <span id="card-errors" style="color:red"></span>
+        <span id="errors" style="color:red"></span>
       </div>          
     </div>
   </form>
 </div>
 
 <script>
-/* Disable readonly fields  */
-  for (var i = 0; i < 6; i++){
-    document.getElementsByClassName('form_readonly')[i].disabled = true;
-  }
+console.log($('#last_name').val());
+</script>
+
+
+<script>
+/* Readonly fields  */
+  $('.form_readonly').prop('readonly', true);
 </script>
 
 <!-- STRIPE PAYMENT -->
@@ -113,6 +117,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     }); 
   });
  
+/* AJAX handles form submission */  
   $(document).ready(function(){
     $(document).on('submit', '#payment_form', function(){	
       event.preventDefault();
@@ -124,12 +129,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         data: data_string,
         success: function(json){
           var obj = jQuery.parseJSON(json);
-          console.log(obj.success);
-          $('#card-errors').html(obj.success);
+          if (obj.success == true){
+            window.location.href = 'https://vmssecurepay.jkamradcliffe.net/index.php/payment_form/privacy_policy'
+            $('#card-errors').html("There are no errors in the form");
+            console.log("There are no errors in the form");
+          }else{
+            console.log("There are errors in the form");
+            $('#card-errors').html("There are errors in the form");
+            $('#errors').html(obj.error);           
+          }
 
         }		
       });
-
       return false;
     });
   });		
