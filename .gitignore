@@ -27,3 +27,7 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 *.sublime-project
 
 application/views/email.html
+application/helpers/form_validation_helper.php
+application/libraries/stripe/.coveralls.yml
+application/libraries/stripe/.github/ISSUE_TEMPLATE.md
+application/libraries/stripe/.travis.yml
