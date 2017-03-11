@@ -82,7 +82,10 @@ input[type=number]::-webkit-outer-spin-button {
   background-color: Transparent;
   padding: 0
 }
-#cancel:hover, #privacy-policy-link:hover{
+a{
+  color: #0000ff;
+}
+a:hover, #cancel:hover, #privacy-policy-link:hover{
 	color: #6666ff
 }
 
