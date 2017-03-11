@@ -14,12 +14,13 @@
     <li>respond to any communication from you</li>
   </ul>
 
-<!--
-  <h2>Where your data is stored</h2>
-  <p>We store your data on our secure servers in the UK.</p>
 
-  <p>It may also be stored outside of Europe, where it could be viewed by our staff or suppliers.</p>
--->
+  <h2>Where your data is stored</h2>
+  <p>We store your data on our secure servers.</p>
+
+  <p>We do not store sensitive credit/debit card details.</p>
+  
+
 
   <p>By submitting your personal data, you agree to this.</p>
 
@@ -29,10 +30,12 @@
   <strong>Any data you transmit is at your own risk.</strong>
 
   <p>We have procedures and security features in place to try and keep your data secure once we receive it.</p>
+  
+  <p>Card details that we collect are processed by <a href="https://stripe.com/gb/payments">Stripe</a>. This helps to ensure that we are PCI-DSS compliant and your details are used safely.</p>
 
+  <strong>Payment transactions are always encrypted.</strong>
+  
   <p>We won’t share your information with any other organisations for marketing, market research or commercial purposes, and we don’t pass on your details to other websites.</p>
-
-<!--  <strong>Payment transactions are always encrypted.</strong>-->
 
   <h2>Disclosing your information</h2>
   <p>We may pass on your personal information if we have a legal obligation to do so.</p>
@@ -53,6 +56,6 @@
 
   <p>If you come to VMS Secure Payments from another website, we may receive personal information about you from the other website. You should read the privacy policy of the website you came from to find out more about this.</p>
 
-  <p style="color: #708090">Last updated: 21 February 2017</p>
+  <p style="color: #708090">Last updated: 11 March 2017</p>
   <p style="color: #708090">This privacy policy has been adapted from <a href="https://www.gov.uk/help/privacy-policy">www.gov.uk/help/privacy-policy</a></p>
 </div>
