@@ -30,6 +30,7 @@ class Payment_status extends CI_Controller {
       $error['heading'] = "Unable to process your request";
       /* Card Errors */
       if ($error['type'] == 'card_error'){
+        log_message('error', 'There\'s a card error.');//DO SOMETHING SENSIBLE WITH THIS
         /* Generic Decline */
         if (($error['code'] == 'card_declined') && ($error['decline_code'] != 'fraudulent')){
           $error['partial'] = $this->load->view('templates/generic_decline', '', true);

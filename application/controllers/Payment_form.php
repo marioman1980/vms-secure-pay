@@ -47,7 +47,7 @@ class Payment_form extends CI_Controller {
 
   public function process_payment(){
     require_once APPPATH."libraries/stripe/init.php";/* Include Stripe library */
-    \Stripe\Stripe::setApiKey("sk_test_uzOEZerf4OU9Hgg0aWQdpQpH");/* Secret API key */
+    \Stripe\Stripe::setApiKey("sk_test_uzOEZerf4OU9Hgg0aWQdpQpG");/* Secret API key */
     $response = array();
 
     /* Initialise session */
