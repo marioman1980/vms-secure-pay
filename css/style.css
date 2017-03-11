@@ -3,12 +3,12 @@ body{
 	font-size:12px; 
 	padding-bottom:20px
 }
-form, #header-img, #privacy-policy{
+form, #header-img, #privacy-policy, #payment_status{
 	width:100%;
 	margin:auto
 }
 @media only screen and (min-width:601px){
-	form, #header-img{
+	form, #header-img, #payment_status{
 		width:500px
 	}
 }
@@ -42,11 +42,16 @@ form, #header-img, #privacy-policy{
     padding: 5px
   }
 }
+#payment_status, #privacy-policy{
+  border: 1px solid #cccccc;
+  box-shadow: -3px 3px 10px #888888;
+  padding: 10px
+}
 
 
 select:hover, .shadow:hover{
   border:1px solid #cccccc;
-  box-shadow: -1px 1px 1px #888888
+  box-shadow: -3px 3px 6px #888888
 }
 
 /* Remove spinner from number inputs */

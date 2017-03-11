@@ -50,6 +50,9 @@ class Payment_form extends CI_Controller {
     \Stripe\Stripe::setApiKey("sk_test_uzOEZerf4OU9Hgg0aWQdpQpG");/* Secret API key */
     $response = array();
 
+    /* Initialise session */
+    $this->load->library('session');
+    
     /* Load form helper */ 
     $this->load->helper(array('form'));
 
@@ -64,6 +67,7 @@ class Payment_form extends CI_Controller {
       $response['success'] = false;
       $response['error'] = validation_errors();
     }else{
+      $response['success'] = true;
       /* Get details from form */
       $token = $this->input->post('stripeToken');
       $customer_name = $this->input->post('first_name').' '.$this->input->post('last_name');
@@ -78,29 +82,43 @@ class Payment_form extends CI_Controller {
        * When database is implemented, it will be possible 
        * to charge the same customer by id
        */
-      $customer = \Stripe\Customer::create(array(
-        "email" => $this->input->post('email'),
-        "source" => $token,
-      ));
-      
-      /* Charge the Customer instead of the card */
-      $charge = \Stripe\Charge::create(array(
-        "amount" => $amount_due,
-        "currency" => "gbp",
-        "customer" => $customer->id,
-        'metadata' => array('Cardholder Name' => $cardholder_name, 'Customer Name' => $customer_name, 'Email' => $email),
-        'description' => $reference
-      ));      
-      
-      $response['success'] = true;
-      $response['error'] = null;
+      try{
+        $customer = \Stripe\Customer::create(array(
+          "email" => $this->input->post('email'),
+          "source" => $token,
+        ));
+
+        /* Charge the Customer instead of the card */
+        $charge = \Stripe\Charge::create(array(
+          "amount" => $amount_due,
+          "currency" => "gbp",
+          "customer" => $customer->id,
+          'metadata' => array('Cardholder Name' => $cardholder_name, 'Customer Name' => $customer_name, 'Email' => $email),
+          'description' => $reference
+        ));      
+
+        $this->session->set_userdata('success', true);
+        $response['error'] = null;        
+      }
+      /*
+       * Catch card/API/system errors
+       *
+       * Payment_status controller will discern specific card errors
+       *
+       */
+      catch(\Stripe\Error\Base $e){
+        
+        $e_json = $e->getJsonBody();
+        $error = $e_json['error'];
+        $response['error'] = null;
+        $this->session->set_userdata($error);
+        $this->session->set_userdata('success', false);
+        $this->session->set_userdata('url', $this->input->post('url'));
+      }	
     }
     echo json_encode ($response) ;
   }
   
-  public function payment_status(){
-    
-  }
 
 }   
 ?>

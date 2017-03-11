@@ -112,6 +112,9 @@ console.log($('#last_name').val());
       } else {
         /* Insert token using hidden field so that it can be submitted */
         $('#payment_form').append($('<input type="hidden" name="stripeToken">').val(result.token.id));
+        /* Get current url, to allow user to return if necessary */
+        var url = window.location.href;
+        $('#payment_form').append($('<input type="hidden" name="url">').val(url));
         $('#payment_form').submit();         
       }
     }); 
@@ -130,13 +133,13 @@ console.log($('#last_name').val());
         success: function(json){
           var obj = jQuery.parseJSON(json);
           if (obj.success == true){
-            window.location.href = 'https://vmssecurepay.jkamradcliffe.net/index.php/payment_form/privacy_policy'
-            $('#card-errors').html("There are no errors in the form");
+            window.location.href = 'https://vmssecurepay.jkamradcliffe.net/index.php/payment_status'
             console.log("There are no errors in the form");
           }else{
             console.log("There are errors in the form");
             $('#card-errors').html("There are errors in the form");
-            $('#errors').html(obj.error);           
+            $('#errors').html(obj.error); 
+            console.log(obj.error);
           }
 
         }		
