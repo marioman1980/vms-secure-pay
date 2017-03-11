@@ -47,7 +47,7 @@ class Payment_form extends CI_Controller {
 
   public function process_payment(){
     require_once APPPATH."libraries/stripe/init.php";/* Include Stripe library */
-    \Stripe\Stripe::setApiKey("sk_test_uzOEZerf4OU9Hgg0aWQdpQpG");/* Secret API key */
+    \Stripe\Stripe::setApiKey("sk_test_uzOEZerf4OU9Hgg0aWQdpQpH");/* Secret API key */
     $response = array();
 
     /* Initialise session */
@@ -69,12 +69,19 @@ class Payment_form extends CI_Controller {
     }else{
       $response['success'] = true;
       /* Get details from form */
+      $charge_details = array(
+        'customer_name'   => $this->input->post('first_name').' '.$this->input->post('last_name'),
+        'email'           => $this->input->post('email'),
+        'amount_due'      => $this->input->post('amount_due') * 100,
+        'reference'       => $this->input->post('reference'),
+        'cardholder_name' => $this->input->post('cardholder')
+      );
       $token = $this->input->post('stripeToken');
-      $customer_name = $this->input->post('first_name').' '.$this->input->post('last_name');
-      $email = $this->input->post('email');
-      $amount_due = $this->input->post('amount_due') * 100;
-      $reference = $this->input->post('reference');
-      $cardholder_name = $this->input->post('cardholder');
+//      $customer_name = $this->input->post('first_name').' '.$this->input->post('last_name');
+//      $email = $this->input->post('email');
+//      $amount_due = $this->input->post('amount_due') * 100;
+//      $reference = $this->input->post('reference');
+//      $cardholder_name = $this->input->post('cardholder');
 
       /* 
        * Create a Customer
@@ -84,19 +91,21 @@ class Payment_form extends CI_Controller {
        */
       try{
         $customer = \Stripe\Customer::create(array(
-          "email" => $this->input->post('email'),
-          "source" => $token,
+          "email" => $charge_details['email'],
+          "source" => $token
         ));
 
         /* Charge the Customer instead of the card */
         $charge = \Stripe\Charge::create(array(
-          "amount" => $amount_due,
+          "amount" => $charge_details['amount_due'],
           "currency" => "gbp",
           "customer" => $customer->id,
-          'metadata' => array('Cardholder Name' => $cardholder_name, 'Customer Name' => $customer_name, 'Email' => $email),
-          'description' => $reference
+          'metadata' => array('Cardholder Name' => $charge_details['cardholder_name'], 'Customer Name' => $charge_details['customer_name'], 'Email' => $charge_details['email']),
+          'description' => $charge_details['reference']
+//          'receipt_email' => $email - NOT AVAILABLE IN TEST MODE
         ));      
 
+        $this->session->set_userdata($charge_details);
         $this->session->set_userdata('success', true);
         $response['error'] = null;        
       }
