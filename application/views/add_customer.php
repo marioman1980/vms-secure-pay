@@ -56,8 +56,32 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		</div>
   </div>
 <!-- End Reset form confirm modal -->
-</section>
 
+<!-- Start Form Success alert modal -->
+   <div id="form-success" class="w3-modal">
+      <div class="w3-modal-content" style="width:300px">
+			 <div class="w3-container" style="width:300px">
+				  <span id="close-modal" class="w3-closebtn">&times;</span>
+			 	  <p id="form-success-msg"></p>
+			 </div>
+		</div>
+  </div>
+<!-- End Form Success alert modal -->
+</section>
+<script>
+   $('#close-modal').click(function(){
+      $('#form-success').hide();
+   }); 
+</script>
+<script>
+  $('#submit').click(function(){
+    console.log($('select#title option:checked').val());
+    if ($('select#title option:checked').val() != 'Select'){
+      $('select#title option:checked').removeAttr('disabled');
+    }
+  });
+
+</script>
 
 <!-- Clear form - HTML5 type="reset" not used as it doesn't allow for confirmation -->
 <!--

@@ -49,7 +49,7 @@ class Email extends USER_Controller {
         
     /* If there are errors, add messages to response */
     if ($this->form_validation->run() == FALSE) { 
-      $response['success'] = "There are errors in the form";
+      $response['success'] = false;
       $response['error'] = validation_errors();
     } 
     /* If there are no errors, compile and send email */
@@ -79,7 +79,9 @@ class Email extends USER_Controller {
         'stripe_id'   => $stripe_id,
         'user_id'     => $user_id,
         'api_pk'      => $user_row->api_pk,
-        'img'         => $user_row->logo_url
+        'img'         => $user_row->logo_url,
+        'username'    => $user_row->user_first_name.' '.$user_row->user_last_name,
+        'company'     => $user_row->company_name
       );		 			 			 
         
       /* 
@@ -126,7 +128,7 @@ class Email extends USER_Controller {
       $this->email->send();	
       
       /* Add messages to response */
-      $response['success'] = "Email Sent!!";
+      $response['success'] = true;
       $response['error'] = null;
 
     }

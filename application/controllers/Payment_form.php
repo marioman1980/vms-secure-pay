@@ -52,7 +52,7 @@ class Payment_form extends CUSTOMER_Controller {
        *
        * CI PHP error can be disabled in index.php by changing environment from development to production
        */
-      $this->load->view('custom_url_error.php');        
+      $this->load->view('my404.php');        
     }
     $this->load->view('templates/footer'); 
   }

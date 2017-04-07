@@ -188,10 +188,14 @@ if ($('section').data('title') === 'add_customer'){
         success: function(json){
           var obj = jQuery.parseJSON(json);
           if (obj.success == true){
+            $('#form-success-msg').html('Customer added/updated');
+            $('#form-success').show();
             console.log("Success");
           }
           else{
             console.log("No success");
+            $('#form-success-msg').html('There are errors in the form');
+            $('#form-success').show();
             $('#form-errors').html(obj.error); 
           }
         }		
@@ -235,17 +239,19 @@ if ($('section').data('title') === 'payment_request'){
           data: data_string,
           success: function(json){
             var obj = jQuery.parseJSON(json);
-            console.log(obj.success);
-            console.log(obj.error);
-            $('#error').html(obj.error);
-            $('#email_sent_alert').html(obj.success);
-
-            $('#email_sent').show();
-            //document.getElementById('email_sent').style.display='block';
-
-            if (obj.success == "Email Sent!!"){
+            if (obj.success == true){
+              $('#email_sent_alert').html('Request for payment sent <br/><br/> \
+                                            You can view the status of your payments <a href="../display_payments">here</a>');
+              $('#email_sent').show();
               form.find('#submit').prop('disabled', true);
+              console.log("Success");
             }
+            else{
+              console.log("No success");
+              $('#email_sent_alert').html('There are errors in the form');
+              $('#email_sent').show();
+              $('#error').html(obj.error); 
+            }            
 
           }		
         });

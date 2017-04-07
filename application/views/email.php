@@ -140,15 +140,15 @@ span{
                     <td width="200">&nbsp;</td>
                   </tr>
                   <tr>
-                    <td width="200" valign="top">&nbsp;</td>
-                    <td width="200" valign="top" align="center"><!-- Logo -->
+<!--                    <td width="200" valign="top">&nbsp;</td>-->
+                    <td width="200" valign="top" align="left"><!-- Logo -->
                       <div class="contentEditableContainer contentImageEditable" >
                         <div class="contentEditable" >
-                          <img src="https://vmssecurepay.jkamradcliffe.net/uploads/<?php echo $img; ?>" width="225" height="75"  ata-default="placeholder" alt='Logo'/>
+                          <img src="https://vmssecurepay.jkamradcliffe.net/uploads/<?php echo $img; ?>" width="150" height="150"  ata-default="placeholder" alt='Logo'/>
                         </div>
                       </div>
                     </td><!-- End Logo -->
-                    <td width="200" valign="top">&nbsp;</td>
+                    <td width="400" valign="top">&nbsp;</td>
 						      </tr>
 						      <tr height="5">
                     <td width="200">&nbsp;</td>
@@ -196,9 +196,9 @@ span{
                               <br /><br>
                               <?php echo $message; ?><br />
                               <br />
-                              <span>Dave Collerton</span><br />
-                              <strong>Reservation Team Management</strong><br>
-                              <strong>Villa Marketing Solutions</strong>
+                              <span><?php echo $username; ?></span><br />
+<!--                              <strong>Reservation Team Management</strong><br>-->
+                              <strong><?php echo $company; ?></strong>
 										        </p>
                           </div>
                         </div>
