@@ -1,8 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+
 ?>
 
-<section class="w3-container w3-padding-8">
+<section data-title="payment_request" class="w3-container w3-padding-8">
 	<div id="error" style="color:red"></div>
   <form id="details_for_email" action="" method="post">   
 		<!--  
@@ -13,7 +14,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class="w3-row">
       <label class="w3-third">Title</label>
       <select class="w3-twothird field" id="title" name="title" style="width:70px" required>   
-        <option value="" disabled selected>Select</option>	
+        <option value="<?php echo $customer->title; ?>" disabled selected><?php echo $customer->title; ?></option>	
         <?php
         //Loop used to populate dropdown
           $titles = array("Mr","Master","Ms","Miss","Mrs","Mx");
@@ -23,27 +24,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
     <div class="w3-row">
       <label class="w3-third">First Name</label>
-      <input class="w3-twothird field shadow" id="first_name" name="first_name" type="text" required />
+      <input class="w3-twothird field shadow" id="first_name" name="customer_forename" type="text" value="<?php echo $customer->customer_forename; ?>" required />
     </div>  
     <div class="w3-row">
       <label class="w3-third">Last Name</label>
-      <input class="w3-twothird field shadow" id="last_name" name="last_name" type="text" required />
+      <input class="w3-twothird field shadow" id="last_name" name="customer_surname" type="text" value="<?php echo $customer->customer_surname; ?>" required />
     </div>
     <div class="w3-row">
       <label class="w3-third">Email</label>
-      <input class="w3-twothird field shadow" id="email" name="email" type="email" required />
+      <input class="w3-twothird field shadow" id="email" name="email" type="email" value="<?php echo $customer->email; ?>" required />
     </div>
     <div class="w3-row">
-      <label class="w3-third">Agent</label>
-      <input class="w3-twothird field shadow" id="agent" name="agent" type="text" required />
+      <label class="w3-third">Payment For</label>
+      <input class="w3-twothird field shadow" id="payment_for" name="payment_for" type="text" required />
     </div>
     <div class="w3-row">
       <label class="w3-third">Reference</label>
       <input class="w3-twothird field shadow" id="reference" name="reference" type="text" required />
     </div>
     <div class="w3-row">
-      <label class="w3-third">Resort</label>
-      <input class="w3-twothird field shadow" id="resort" name="resort" type="text" required />
+      <label class="w3-third">Miscellaneous</label>
+      <input class="w3-twothird field shadow" id="miscellaneous" name="miscellaneous" type="text" value="For your records. Customers won't see this" style="color:#999999"/>
     </div>
     <div class="w3-row">
       <label class="w3-third">Amount Due</label>
@@ -103,6 +104,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	</script>
 
 <!-- Clear form - HTML5 type="reset" not used as it doesn't allow for confirmation -->
+<!--
 <script>
   $('#cancel').click(function(){
     $('#reset_form').show();
@@ -119,4 +121,56 @@ defined('BASEPATH') OR exit('No direct script access allowed');
    $('#close-reset-modal').click(function(){
       $('#reset_form').hide();
    });	     
+</script>
+-->
+
+<!--
+<script>
+  $(document).ready(function(){
+    $(document).on('submit', '#details_for_email', function(){	
+       event.preventDefault();
+       var form = $('#details_for_email');
+       var data_string = $(form).serialize();	
+
+       $.ajax({
+          type: 'POST',
+          url: 'https://jkamradcliffe.net/vmssecurepay/index.php/email/htmlmail',
+          data: data_string,
+          success: function(json){
+            var obj = jQuery.parseJSON(json);
+            console.log(obj.success);
+            console.log(obj.error);
+            $('#error').html(obj.error);
+            $('#email_sent_alert').html(obj.success);
+
+            $('#email_sent').show();
+            //document.getElementById('email_sent').style.display='block';
+
+            if (obj.success == "Email Sent!!"){
+              form.find('#submit').prop('disabled', true);
+            }
+              
+          }		
+        });
+        return false;
+     });
+  });	
+</script>
+-->
+
+<!--
+<script>
+  removePlaceholderText($('#miscellaneous'), 'For your records. Customers won\'t see this');
+</script>
+-->
+
+
+<script>
+  $('#submit').click(function(){
+    console.log($('select#title option:checked').val());
+    if ($('select#title option:checked').val() != 'Select'){
+      $('select#title option:checked').removeAttr('disabled');
+    }
+  });
+
 </script>

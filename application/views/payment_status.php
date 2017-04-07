@@ -13,6 +13,8 @@
     ?>
     <p><?php echo $retry; ?></p>
     <p><?php echo $exit; ?></p>
+    
+    
   </section>
 </div>
 

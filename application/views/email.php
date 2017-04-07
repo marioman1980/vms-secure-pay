@@ -144,7 +144,7 @@ span{
                     <td width="200" valign="top" align="center"><!-- Logo -->
                       <div class="contentEditableContainer contentImageEditable" >
                         <div class="contentEditable" >
-                          <img src="https://vmssecurepay.jkamradcliffe.net/images/vmslogo.png" width="225" height="75"  ata-default="placeholder" alt='Logo'/>
+                          <img src="https://vmssecurepay.jkamradcliffe.net/uploads/<?php echo $img; ?>" width="225" height="75"  ata-default="placeholder" alt='Logo'/>
                         </div>
                       </div>
                     </td><!-- End Logo -->
@@ -175,9 +175,8 @@ span{
                     <td width="500" align="center"><!-- Content -->
 								      <div class="contentEditableContainer contentTextEditable" >
                         <div class="contentEditable" >
-                           <span><?php echo $agent; ?><br>
-                          <?php echo $reference; ?><br>
-                          <?php echo $resort; ?><br></span>
+                           <span><?php echo $payment_for; ?><br>
+                          <?php echo $reference; ?><br></span>
                         </div>
                       </div>
 							      </td>

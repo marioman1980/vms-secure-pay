@@ -3,12 +3,13 @@ body{
 	font-size:12px; 
 	padding-bottom:20px
 }
-form, #header-img, #privacy-policy, #payment_status{
+
+form, #header-img, #privacy-policy, #payment_status, #contact_success, #home-btn-wrapper, #page-not-found{
 	width:100%;
 	margin:auto
 }
 @media only screen and (min-width:601px){
-	form, #header-img, #payment_status{
+	form, #header-img, #payment_status, #contact_success, #home-btn-wrapper, #page-not-found{
 		width:500px
 	}
 }
@@ -42,16 +43,17 @@ form, #header-img, #privacy-policy, #payment_status{
     padding: 5px
   }
 }
-#payment_status, #privacy-policy{
+#payment_status, #privacy-policy, #contact_success{
   border: 1px solid #cccccc;
-  box-shadow: -3px 3px 10px #888888;
+  box-shadow: 0 0 8px #D0D0D0;
   padding: 10px
 }
 
 
 select:hover, .shadow:hover{
   border:1px solid #cccccc;
-  box-shadow: -3px 3px 6px #888888
+/*  box-shadow: -3px 3px 6px #888888*/
+  box-shadow: 0 0 8px #D0D0D0
 }
 
 /* Remove spinner from number inputs */
@@ -73,7 +75,7 @@ input[type=number]::-webkit-outer-spin-button {
 	margin-bottom:10px; 
 	width: 100%
 }
-#cancel, #privacy-policy-link{
+#cancel, #privacy-policy-link, #btn-register, #btn-cancel, #btn-logout, #btn-delete, #btn-delete-account{
 	text-decoration: underline;
 	color: #0000ff;
 	cursor: pointer; 
@@ -85,7 +87,7 @@ input[type=number]::-webkit-outer-spin-button {
 a{
   color: #0000ff;
 }
-a:hover, #cancel:hover, #privacy-policy-link:hover{
+a:hover, #cancel:hover, #privacy-policy-link:hover, #btn-register:hover, #btn-cancel:hover, #btn-logout:hover, #btn-delete:hover, #btn-delete-account:hover{
 	color: #6666ff
 }
 
@@ -114,25 +116,51 @@ a:hover, #cancel:hover, #privacy-policy-link:hover{
   margin-bottom: 15px
 }
 
-/*
+
+/*===================================NAVIGATION=============================*/
 
 
-div > #span_placeholder {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  font-weight: 300;
-  line-height: 32px;
-  color: #8798AB;
-  border-bottom: 1px solid #586A82;
-  cursor: text;
+#title_link:hover{color: #6666ff}
+
+
+/*------Nav to the right on larger screens-------*/
+.nav_float{float:right}
+@media screen and (max-width:600px){
+	.nav_float{float:none}
+  /*#nav_container{background-color: #ffffff}*/
 }
 
-div > #span_placeholder span {
-  position: absolute;
-  top: 0;
-  left: 0;
-  cursor: text;
-}*/
+
+#css_hamburger {position: relative;padding-left: 1.5em;}/*Hamburger created using CSS*/
+#css_hamburger:before {content: "";position: absolute;left: 0;top: 0.25em;width: 25px;height: 2px;background: black;box-shadow: 0 0.4em 0 0 black,0 0.8em 0 0 black;
+}
+#hamburger_link{height:46px}
+#hamburger_link:hover #css_hamburger:before{  background: #ccc;box-shadow: 0 0.4em 0 0 #ccc,0 0.8em 0 0 #ccc;}		
+#hamburger_link:hover{background-color:transparent}		
+/*==============================END NAVIGATION==========================*/
+
+td, th{
+	border: 1px solid #bcc6cc;
+	border-collapse: collapse;
+	text-align: center;
+  font-size: 12px;
+  cursor: pointer
+}
+th{
+  background-color: #eeeeee;
+}
+.not_selected{
+  background-color: #eeeeee;
+}
+
+.selected {
+    background-color: #aaaaaa;
+    color: #000000;
+}
+.home_btn{
+  margin: 1px;
+  width:100%
+}
+.home_btn:hover{
+  background-color: #cccccc
+}

@@ -2,6 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 
+<section data-title="payment_form">
   <form id="payment_form" name="payment_form" action="" method="post">
     <span class="payment_errors" style="color:red"></span>
     <h4>Your Details</h4>
@@ -12,6 +13,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
   Readonly fields will be pre-populated
 -->     
+    <input id="payment_id" name="payment_id" type="hidden" value="<?php echo $payment_id; ?>"/>
+    <input id="stripe_id" name="stripe_id" type="hidden" value="<?php echo $stripe_id; ?>"/>
+    <input id="customer_id" name="customer_id" type="hidden" value="<?php echo $customer_id; ?>"/>
+    <input id="user_id" name="user_id" type="hidden" value="<?php echo $user_id; ?>"/>
+
     <div class="w3-row">
       <label class="w3-third">Title</label>
       <input class="w3-twothird field form_readonly" id="title" name="title" type="text" value="<?php echo $title; ?>" style="width:50px" required readonly></input>
@@ -47,29 +53,34 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <div class="w3-twothird">
         <!-- CARD - Stripe Element mounted to div -->
         <div id="card-element" class="field shadow"></div> 
-        <input id="submit_button" name="submit_button" type="submit" value="Submit"></input> 	
-        <button id="privacy-policy-link"><a href="https://vmssecurepay.jkamradcliffe.net/index.php/payment_form/privacy_policy">Privacy Policy</a></button>  <br> 
+        <input id="submit_button" name="submit_button" type="submit" value="Submit"></input> 	  <br> 
         <span id="card-errors" style="color:red"></span>
         <span id="errors" style="color:red"></span>
       </div>          
     </div>
   </form>
 </div>
+</section>
 
-<script>
-console.log($('#last_name').val());
-</script>
 
 
 <script>
 /* Readonly fields  */
   $('.form_readonly').prop('readonly', true);
 </script>
+<script>
+  window.onload = function(){
+    submit_for_payment('<?php echo $api_pk; ?>');
+  }
+  
+</script>
 
 <!-- STRIPE PAYMENT -->
+<!--
 <script>
   /* Publishable API key */
-  var stripe = Stripe('pk_test_hf3cRYT5E8wlB3f5X6b75d4R');
+  //var stripe = Stripe('pk_test_hf3cRYT5E8wlB3f5X6b75d4R');
+  var stripe = Stripe('<?php echo $api_pk; ?>');
   var elements = stripe.elements();
   
   /* Custom styling can be passed to options when creating an Element. */
@@ -91,6 +102,7 @@ console.log($('#last_name').val());
   card.addEventListener('change', function(event) {
     if (event.error) {
       $('#card-errors').html(event.error.message);
+      $('#submit_button').prop('disabled', false);
     } else {
       $('#card-errors').html('');
     }
@@ -103,6 +115,8 @@ console.log($('#last_name').val());
 */  
   
   $('#submit_button').click(function(e){
+    /* Disable the submit button to prevent repeated clicks */
+    $('#submit_button').prop('disabled', true);
     e.preventDefault(); /* Prevent form submission */
     /* Create token */
     stripe.createToken(card).then(function(result) {
@@ -136,6 +150,7 @@ console.log($('#last_name').val());
             window.location.href = 'https://vmssecurepay.jkamradcliffe.net/index.php/payment_status'
             console.log("There are no errors in the form");
           }else{
+            $('#submit_button').prop('disabled', false);
             console.log("There are errors in the form");
             $('#card-errors').html("There are errors in the form");
             $('#errors').html(obj.error); 
@@ -147,38 +162,10 @@ console.log($('#last_name').val());
       return false;
     });
   });		
-  
-  
-  
-//  function stripeTokenHandler(token) {
-//    /* Insert token using hidden field so that i can be submitted */
-//    $('#payment_form').append($('<input type="hidden" name="stripeToken">').val(token.id));
-//    alert(token.id);
-//
-//    /* Submit the form */
-//    $('#payment_form').get(0).submit();
-//  }  
-//  
-//  function createToken() {
-//    stripe.createToken(card).then(function(result) {
-//      if (result.error) {
-//        /* Inform user if there's an error */
-//        $('#card-errors').html(result.error.message);
-//      } else {
-//        /* Call function to submit form with token */
-//        stripeTokenHandler(result.token);
-//        //alert(result.token.id);
-//      }
-//    });
-//  }; 
-//
-//  /* Listen for submit event - call function which invokes token creation and form submission */
-//  $('#payment_form').submit(function(e){
-//    e.preventDefault();
-//    createToken();
-//  });  
+
   
 </script>
+-->
 
 
 

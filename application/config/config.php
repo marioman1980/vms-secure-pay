@@ -1,6 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+
+
 /*
 |--------------------------------------------------------------------------
 | Base Site URL
@@ -23,7 +25,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'https://www.jkamradcliffe.net/vmssecurepay/';
+$config['base_url'] = 'https://jkamradcliffe.net/vmssecurepay/';
 
 /*
 |--------------------------------------------------------------------------
@@ -521,3 +523,20 @@ $config['rewrite_short_tags'] = FALSE;
 | Array:		array('10.0.1.200', '192.168.5.0/24')
 */
 $config['proxy_ips'] = '';
+
+/*
+| -------------------------------------------------------------------
+| Native Auto-load
+| -------------------------------------------------------------------
+| 
+| Nothing to do with cnfig/autoload.php, this allows PHP autoload to work
+| for base controllers and some third-party libraries.
+|
+*/
+function __autoload($class) {
+    if (substr($class,0,3) !== 'CI_') {
+        if (file_exists($file = APPPATH . 'core/' . $class . '.php')) {
+            include $file;
+        }
+    }
+}
